@@ -6,8 +6,12 @@ app.use(express.static("public"));
 app.set("view engine", "ejs"); //有加這一行再render的時候就不用打 xx.ejs
 
 app.get("/", (req, res) => {
-  let myString = "<h1>Hello World!</h1>";
-  res.render("index", { myString });
+  res.render("index");
+});
+
+app.get("/example", (req, res) => {
+  let { name, age } = req.query;
+  res.render("response", { name, age });
 });
 
 //port, callback
